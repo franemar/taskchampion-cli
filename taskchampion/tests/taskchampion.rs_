@@ -1,0 +1,37 @@
+// Import the necessary items from the taskchampion crate
+use taskchampion::{Replica}; //StorageConfig
+
+#[cfg(test)]
+mod tests {
+    // Import necessary items from the parent module
+    use super::*;
+
+    #[test]
+    fn test_save_and_read_task() {
+        // Define the database URL
+        //let db_url = "sqlite:.taskchampion/taskchampion.sqlite3.db"; // Assuming a SQLite database file named 'test.db' exists
+
+        // Connect to the existing database
+        //let client = StorageConfig::open(&db_url).expect("Failed to connect to the database");
+
+        // Create a new replica (session) for interacting with the database
+        //let mut replica = client.new_replica().expect("Failed to create a new replica");
+
+        // Create a new task
+        //let task_description = "Test Task";
+        //let task_id = replica.new_task(task_description).expect("Failed to create a new task");
+
+        // Commit changes to the database
+        //replica.commit().expect("Failed to commit changes to the database");
+
+        // Read the task from the database
+        //let task = replica.get_task(task_id).expect("Failed to retrieve the task");
+
+	let all_tasks = Replica::all_tasks(Replica);
+	println!("tasks list: {:#?}", all_tasks);
+
+
+        // Verify that the task description matches the expected value
+        //assert_eq!(task.get_description(), task_description);
+    }
+}
