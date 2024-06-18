@@ -126,7 +126,9 @@ fn get_server(settings: &Settings) -> Result<Box<dyn taskchampion::Server + 'sta
         settings.server_origin.as_ref(),
         settings.encryption_secret.as_ref(),
     ) {
-        let client_id = Uuid::parse_str(client_key)?;
+        //let client_id = Uuid::parse_str(client_key)?;
+        let client_uuid_struct = Uuid::parse_str(client_key);
+        let client_id = client_uuid_struct.unwrap();
 
         log::debug!("Using sync-server with origin {}", origin);
         log::debug!("Sync client ID: {}", client_id);
@@ -140,7 +142,7 @@ fn get_server(settings: &Settings) -> Result<Box<dyn taskchampion::Server + 'sta
         log::debug!("Using local sync-server at `{:?}`", server_dir);
         ServerConfig::Local { server_dir }
     };
-    Ok(config.into_server())?
+    Ok(config.into_server()?)
 }
 
 /// Get a WriteColor implementation based on whether the output is a tty.
