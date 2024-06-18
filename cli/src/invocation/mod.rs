@@ -128,7 +128,7 @@ fn get_server(settings: &Settings) -> Result<Box<dyn taskchampion::Server + 'sta
     ) {
         //let client_id = Uuid::parse_str(client_key)?;
         let client_uuid_struct = Uuid::parse_str(client_key);
-        let client_id = client_uuid_struct.unwrap();
+        let client_id = client_uuid_struct.unwrap_or_default();
 
         log::debug!("Using sync-server with origin {}", origin);
         log::debug!("Sync client ID: {}", client_id);
