@@ -1,8 +1,8 @@
 [workspace]
 
 members = [
-    "taskchampion",
+    #"taskchampion",
     "cli",
-    "sync-server",
-    "replica-server-tests"
+    #"sync-server",
+    #"replica-server-tests"
 ]

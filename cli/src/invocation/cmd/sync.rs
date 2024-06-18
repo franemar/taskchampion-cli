@@ -7,13 +7,13 @@ pub(crate) fn execute<W: WriteColor>(
     replica: &mut Replica,
     settings: &Settings,
     server: &mut Box<dyn Server>,
-) -> Result<(), crate::Error> {
+) -> Result<(), TCError> {
     match replica.sync(server, settings.avoid_snapshots) {
         Ok(()) => {
             writeln!(w, "sync complete.")?;
             Ok(())
         }
-        Err(e) => match e.downcast() {
+        /*Err(e) => match e. {
             Ok(TCError::OutOfSync) => {
                 writeln!(w, "This replica cannot be synchronized with the server.")?;
                 writeln!(
@@ -30,9 +30,9 @@ pub(crate) fn execute<W: WriteColor>(
                 )?;
                 Ok(())
             }
-            Ok(e) => Err(e.into()),
-            Err(e) => Err(e.into()),
-        },
+            Ok(e) => Err(e.into()),*/
+            Err(e) => Err(e.into())
+        //},
     }
 }
 
